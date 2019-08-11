@@ -140,7 +140,7 @@ According to the Android code style guide, the standard practices for some of th
 
 * `@Override`: The @Override annotation __must be used__ whenever a method overrides the declaration or implementation from a super-class. For example, if you use the @inheritdocs Javadoc tag, and derive from a class (not an interface), you must also annotate that the method @Overrides the parent class's method.
 
-* `@SuppressWarnings`: The @SuppressWarnings annotation should only be used under circumstances where it is impossible to eliminate a warning. If a warning passes this "impossible to eliminate" test, the @SuppressWarnings annotation must be used, so as to ensure that all warnings reflect actual problems in the code.
+* `@SuppressWarnings`: The @SuppressWarnings annotation should only be used under circumstances where it is impossible to eliminate a warning. If a warning passes this "impossible to eliminate" test, the @SuppressWarnings annotation must be used, so as to ensure that all warnings reflect actual problems in the code. And you __must__ wirte a comment about why you supressed a warning.
 
 More information about annotation guidelines can be found [here](http://source.android.com/source/code-style.html#use-standard-java-annotations).
 
@@ -457,8 +457,11 @@ Android Studio default ```Ctrl + L```
 
 ## 3. Manifest guidelines
 
+Manifest elements ordering :
+
 * Activities
 * Services
+* Broadcast
 
 ## 4. Gradle guildlines
 
