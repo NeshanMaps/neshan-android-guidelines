@@ -1,14 +1,14 @@
 # Neshan Android Application Guidelines 
 
 
-## 1. Java guidelines
+## Java guidelines
 
-### 1.1 Class files
+### Class files
 Class names are written in [UpperCamelCase](http://en.wikipedia.org/wiki/CamelCase).
 
 For classes that extend an Android component, the name of the class should end with the name of the component; for example: `SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ChangePasswordDialog`.
 
-### 1.2 Don't ignore exceptions
+### Don't ignore exceptions
 
 You must never do the following:
 
@@ -26,7 +26,7 @@ _While you may think that your code will never encounter this error condition or
 
 See alternatives [here](https://source.android.com/source/code-style.html#dont-ignore-exceptions).
 
-### 1.4 Fully qualify imports
+### Fully qualify imports
 
 This is bad: `import foo.*;`
 
@@ -34,7 +34,7 @@ This is good: `import foo.Bar;`
 
 See more info [here](https://source.android.com/source/code-style.html#fully-qualify-imports)
 
-### 1.5 Fields definition and naming
+### Fields definition and naming
 
 Fields should be defined at the __top of the file__ and they should follow the naming rules listed below.
 
@@ -59,7 +59,7 @@ public class MyClass {
 }
 ```
 
-### 1.6 Treat acronyms as words
+### Treat acronyms as words
 
 | Good           | Bad            |
 | -------------- | -------------- |
@@ -69,7 +69,7 @@ public class MyClass {
 | `long id`        | `long ID`        |
 
 
-### 1.7 Use standard brace style
+### Use standard brace style
 
 Braces go on the same line as the code before them.
 
@@ -111,7 +111,7 @@ if (condition) body();  // bad!
 
 ```
 
-### 1.8 Indenting
+### Indenting
 
 * There should be a new line after every new block.
 * There should be new lines after and before ```return``` statment.
@@ -132,9 +132,9 @@ a Method example :
     }
 ```
 
-### 1.9 Annotations
+### Annotations
 
-#### 1.9.1 Annotations practices
+#### Annotations practices
 
 According to the Android code style guide, the standard practices for some of the predefined annotations in Java are:
 
@@ -144,7 +144,7 @@ According to the Android code style guide, the standard practices for some of th
 
 More information about annotation guidelines can be found [here](http://source.android.com/source/code-style.html#use-standard-java-annotations).
 
-#### 1.9.2 Annotations style
+#### Annotations style
 
 __Classes, Methods and Constructors__
 
@@ -165,7 +165,7 @@ Annotations applying to fields should be listed __on the same line__, unless the
 @Nullable @Mock DataManager mDataManager;
 ```
 
-### 1.13 Class member ordering
+### Class member ordering
 
 There is no single correct solution for this but using a __logical__ and __consistent__ order will improve code learnability and readability. It is recommendable to use the following order:
 
@@ -232,7 +232,7 @@ public class MainActivity extends Activity {
 }
 ```
 
-### 1.14 Parameter ordering in methods
+### Parameter ordering in methods
 
 When programming for Android, it is quite common to define methods that take a `Context`. If you are writing a method like this, then the __Context__ must be the __first__ parameter.
 
@@ -248,7 +248,7 @@ public User loadUser(Context context, int userId);
 public void loadUserAsync(Context context, int userId, UserCallback callback);
 ```
 
-### 1.15 Parameter ordering in methods
+### Parameter ordering in methods
 
 When programming for Android, it is quite common to define methods that take a `Context`. If you are writing a method like this, then the __Context__ must be the __first__ parameter.
 
@@ -264,7 +264,7 @@ public User loadUser(Context context, int userId);
 public void loadUserAsync(Context context, int userId, UserCallback callback);
 ```
 
-### 1.16 String constants, naming, and values
+### String constants, naming, and values
 
 Many elements of the Android SDK such as `SharedPreferences`, `Bundle`, or `Intent` use a key-value pair approach so it's very likely that even for a small app you end up having to write a lot of String constants.
 
@@ -293,7 +293,7 @@ static final String EXTRA_SURNAME = "com.myapp.extras.EXTRA_SURNAME";
 static final String ACTION_OPEN_USER = "com.myapp.action.ACTION_OPEN_USER";
 ```
 
-### 1.18 Line length limit
+### Line length limit
 
 Code lines should not exceed __100 characters__. If the line is longer than this limit there are usually two options to reduce its length:
 
@@ -305,7 +305,7 @@ There are two __exceptions__ where it is possible to have lines longer than 100:
 * Lines that are not possible to split, e.g. long URLs in comments.
 * `package` and `import` statements.
 
-#### 2.2.15.1 Line-wrapping strategies
+#### Line-wrapping strategies
 
 There isn't an exact formula that explains how to line-wrap and quite often different solutions are valid. However there are a few rules that can be applied to common cases.
 
@@ -357,7 +357,7 @@ loadPicture(context,
         "Title of the picture");
 ```
 
-### 1.19 RxJava chains styling
+### RxJava chains styling
 
 Rx chains of operators require line-wrapping. Every operator must go in a new line and the line should be broken before the `.`
 
@@ -380,9 +380,9 @@ public Observable<Location> syncLocations() {
 ```
 
 
-## 2. Resources guidelines
+## Resources guidelines
 
-### 2.3.1 Use self closing tags
+### Use self closing tags
 
 When an XML element doesn't have any contents, you __must__ use self closing tags.
 
@@ -407,11 +407,11 @@ This is __bad__ :
 ```
 
 
-### 2.3.2 Resources naming
+### Resources naming
 
 Resource file names are written in __lowercase_underscore__, Style Names are __UpperCamelCase__ Everything else is __lowerCamelCase__.
 
-#### 2.3.2.1 ID naming
+#### ID naming
 
 IDs should be postfixed with the name of the element in camel case. For example:
 
@@ -442,10 +442,10 @@ Menu example:
 </menu>
 ```
 
-#### 2.3.2.2 Strings
+#### Strings
 
 
-#### 2.3.2.3 Colors
+#### Colors
 
 
 ### Attributes ordering
@@ -455,7 +455,7 @@ Android Studio default ```Ctrl + L```
 
 
 
-## 3. Manifest guidelines
+## Manifest guidelines
 
 Manifest elements ordering :
 
@@ -463,6 +463,6 @@ Manifest elements ordering :
 * Services
 * Broadcast
 
-## 4. Gradle guildlines
+## Gradle guildlines
 
 * Do not set static variables as build config, if it's not a real config.
