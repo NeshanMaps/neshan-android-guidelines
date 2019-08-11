@@ -442,10 +442,8 @@ Menu example:
 </menu>
 ```
 
-#### Strings
-
-
 #### Colors
+color __must__ specifed with ```color``` prefix and the content naming system for example : ```colorSeparator```
 
 
 ### Attributes ordering
