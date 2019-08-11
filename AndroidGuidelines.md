@@ -14,7 +14,9 @@ You must never do the following:
 
 ```java
 void setServerPort(String value) {
+
     try {
+    
         serverPort = Integer.parseInt(value);
     } catch (NumberFormatException e) { }
 }
@@ -47,6 +49,7 @@ Example:
 
 ```java
 public class MyClass {
+
     public static final int SOME_CONSTANT = 42;
     public int publicField;
     private static MyClass sSingleton;
@@ -72,12 +75,17 @@ Braces go on the same line as the code before them.
 
 ```java
 class MyClass {
+
     int func() {
+    
         if (something) {
+	
             // ...
         } else if (somethingElse) {
+	
             // ...
         } else {
+	
             // ...
         }
     }
@@ -91,6 +99,7 @@ If the condition and the body fit on one line and that line is shorter than the 
 
 ```java
 if (condition) {
+
     body();
     } 
 ```
