@@ -24,23 +24,6 @@ _While you may think that your code will never encounter this error condition or
 
 See alternatives [here](https://source.android.com/source/code-style.html#dont-ignore-exceptions).
 
-### 1.3 Don't catch generic exception
-
-You should not do this:
-
-```java
-try {
-    someComplicatedIOFunction();        // may throw IOException
-    someComplicatedParsingFunction();   // may throw ParsingException
-    someComplicatedSecurityFunction();  // may throw SecurityException
-    // phew, made it all the way
-} catch (Exception e) {                 // I'll just catch all exceptions
-    handleError();                      // with one generic handler!
-}
-```
-
-See the reason why and some alternatives [here](https://source.android.com/source/code-style.html#dont-catch-generic-exception)
-
 ### 1.4 Fully qualify imports
 
 This is bad: `import foo.*;`
@@ -108,13 +91,36 @@ If the condition and the body fit on one line and that line is shorter than the 
 
 ```java
 if (condition) {
-    body(); } 
+    body();
+    } 
 ```
 
 This is __bad__:
 
 ```java
 if (condition) body();  // bad!
+
+```
+
+### 1.8 Indenting
+
+* There should be a new line after every new block.
+* There should be new lines after and before ```return``` statment.
+
+a Method example :
+
+```java
+    public int myMethod() {
+        // newLine
+        int a;
+        int b;
+        a = 1;
+        b = 2;
+        int c = a + b;
+        // newLine
+        return c;
+        // newLine
+    }
 ```
 
 ### 1.9 Annotations
@@ -149,38 +155,6 @@ Annotations applying to fields should be listed __on the same line__, unless the
 ```java
 @Nullable @Mock DataManager mDataManager;
 ```
-
-### 1.12 Logging guidelines
-
-Use the logging methods provided by the `Log` class to print out error messages or other information that may be useful for developers to identify issues:
-
-* `Log.v(String tag, String msg)` (verbose)
-* `Log.d(String tag, String msg)` (debug)
-* `Log.i(String tag, String msg)` (information)
-* `Log.w(String tag, String msg)` (warning)
-* `Log.e(String tag, String msg)` (error)
-
-As a general rule, we use the class name as tag and we define it as a `static final` field at the top of the file. For example:
-
-```java
-public class MyClass {
-    private static final String TAG = MyClass.class.getSimpleName();
-
-    public myMethod() {
-        Log.e(TAG, "My error message");
-    }
-}
-```
-
-VERBOSE and DEBUG logs __must__ be disabled on release builds. It is also recommended to disable INFORMATION, WARNING and ERROR logs but you may want to keep them enabled if you think they may be useful to identify issues on release builds. If you decide to leave them enabled, you have to make sure that they are not leaking private information such as email addresses, user ids, etc.
-
-To only show logs on debug builds:
-
-```java
-if (BuildConfig.DEBUG) Log.d(TAG, "The value of x is " + x);
-```
-
-TAG __must__ be the class simple name : ``` MyClass.class.getSimpleName();```
 
 ### 1.13 Class member ordering
 
@@ -407,7 +381,7 @@ This is good:
 
 ```xml
 <TextView
-	android:id="@+id/text_view_profile"
+	android:id="@+id/profileTextView"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content" />
 ```
@@ -417,7 +391,7 @@ This is __bad__ :
 ```xml
 <!-- Don\'t do this! -->
 <TextView
-    android:id="@+id/text_view_profile"
+    android:id="@+id/profileTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 </TextView>
@@ -426,25 +400,25 @@ This is __bad__ :
 
 ### 2.3.2 Resources naming
 
-Resource IDs and names are written in __lowercase_underscore__.
+Resource file names are written in __lowercase_underscore__, Style Names are __UpperCamelCase__ Everything else is __lowerCamelCase__.
 
 #### 2.3.2.1 ID naming
 
-IDs should be prefixed with the name of the element in camel case. For example:
+IDs should be postfixed with the name of the element in camel case. For example:
 
 
 | Element            | Prefix            |
 | -----------------  | ----------------- |
-| `TextView`           | `textSomething`             |
-| `ImageView`          | `imageSomething`            |
-| `Button`             | `buttonSomething`           |
-| `Menu`               | `menuSomething`             |
+| `TextView`           | `SomethingTextView`             |
+| `ImageView`          | `SomethingImageView`            |
+| `Button`             | `SomethingButton`           |
+| `Menu`               | `SomethingMenu`             |
 
 Image view example:
 
 ```xml
 <ImageView
-    android:id="@+id/imagePorfile"
+    android:id="@+id/profileImageView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 ```
@@ -454,43 +428,29 @@ Menu example:
 ```xml
 <menu>
 	<item
-        android:id="@+id/menuDone"
+        android:id="@+id/doneMenu"
         android:title="Done" />
 </menu>
 ```
 
 #### 2.3.2.2 Strings
 
-String names start with a prefix that identifies the section they belong to. For example `registrationEmailHint` or `registrationNameHint`. If a string __doesn't belong__ to any section, then you should follow the rules below:
-
-
-| Prefix             | Description                           |
-| -----------------  | --------------------------------------|
-| `errorSomething`             | An error message                      |
-| `msgSomething`               | A regular information message         |
-| `titleSomething`             | A title, i.e. a dialog title          |
-| `actionSomething`            | An action such as "Save" or "Create"  |
 
 #### 2.3.2.3 Colors
 
-Colors must be camelCase and name of color not name of where it used
+
+### Attributes ordering
+
+Android Studio default ```Ctrl + L```
 
 
-#### 2.3.2.3 Styles and Themes
-
-Unlike the rest of resources, style names are written in __UpperCamelCase__.
-
-### 2.3.3 Attributes ordering
-
-As a general rule you should try to group similar attributes together. A good way of ordering the most common attributes is:
-
-1. View Id
-2. Style
-3. Layout width and layout height
-4. Other layout attributes, sorted alphabetically
-5. Remaining attributes, sorted alphabetically
 
 
 ## 3. Manifest guidelines
 
+* Activities
+* Services
+
 ## 4. Gradle guildlines
+
+* Do not set static variables as build config, if it's not a real config.
